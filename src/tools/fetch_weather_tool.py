@@ -1,5 +1,5 @@
-from agent_framework import tool
 import requests
+from agent_framework import tool
 
 
 @tool
