@@ -1,13 +1,13 @@
 # import asyncio
 import os
-from fastapi import FastAPI
+
 # from dotenv import load_dotenv
-
-
 from contextlib import asynccontextmanager
-from src.utils.ollama_client_util import ollama_client
+
+from fastapi import FastAPI
 
 from src.routes import ai_router
+from src.utils.ollama_client_util import ollama_client
 
 
 @asynccontextmanager
@@ -19,8 +19,8 @@ async def lifespan(app: FastAPI):
 
 # initialize the FastAPI app
 app = FastAPI(
-    description=os.getenv("APP_DESCRIPTION"),
-    title=os.getenv("APP_NAME"),
+    description=os.getenv("APP_DESCRIPTION", "Agentic AI app"),
+    title=os.getenv("APP_NAME", "Agentic AI"),
     lifespan=lifespan,
 )
 
