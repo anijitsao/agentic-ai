@@ -9,6 +9,8 @@ from fastapi import FastAPI
 from src.routes import ai_router
 from src.utils.ollama_client_util import ollama_client
 
+from pathlib import Path
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
