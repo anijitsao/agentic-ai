@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "agent-framework-ollama>=1.0.0b260709",
-    "fastapi[standard]>=0.139.0",
+    "fastapi[standard]>=0.141.1",
+    "openai-agents>=0.22.2",
     "requests>=2.34.2",
 ]
