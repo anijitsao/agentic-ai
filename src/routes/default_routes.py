@@ -11,5 +11,5 @@ def index_route():
 
 
 @router.get("/about", response_model=IndexResponseModel)
-async def about_page():
+async def about_route():
     return {"data": {"message": "About page"}}

@@ -1,2 +1,2 @@
 from .index_model import IndexResponseModel
-from .weather_model import ChatResponseModel
+from .weather_model import ChatResponseModel, ChatRequestModel

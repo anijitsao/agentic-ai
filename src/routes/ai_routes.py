@@ -1,28 +1,29 @@
-import os
+from fastapi import APIRouter, HTTPException, status
 
-from fastapi import APIRouter, Request
-
-from agents import Agent, Runner
+from agents import Agent, ModelSettings, Runner
 
 # from src.agents.history_agent import create_history_agent
-from src.models import ChatResponseModel
+from src.models import ChatRequestModel, ChatResponseModel
 
-router = APIRouter(tags=["egentic-ai"])
+router = APIRouter(tags=["agentic-ai"])
 
 
-@router.get("/question/", response_model=ChatResponseModel)
-async def generate_response_from_prompt(req: Request, query: str = "what is python?"):
+@router.post("/question/", response_model=ChatResponseModel)
+async def generate_response_from_prompt(req: ChatRequestModel):
     try:
         history_agent = Agent(
             name="HistoryAgent",
             instructions="""You are a  history agent who can explain things shortly.
-                Please describe the things very shortly within 20 words.
+                - Keep response to 10 words or fewer
                 """,
-            model=os.getenv("MODEL_NAME"),
         )
-        response = await Runner.run(starting_agent=history_agent, input=query)
-        print("Hello from openai-agents!")
+        response = await Runner.run(starting_agent=history_agent, input=req.prompt)
+        print("Hello from openai-agents!", response)
 
-        return {"data": {"prompt": query, "response": response.final_output}}
+        return {"data": {"prompt": req.prompt, "response": response.final_output}}
     except Exception as e:
         print("error occcurred", e)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Agent execution failed: {str(e)}",
+        )
