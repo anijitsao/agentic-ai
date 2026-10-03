@@ -6,6 +6,6 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.141.1",
-    "openai-agents>=0.22.2",
+    "openai-agents>=0.23.1",
     "requests>=2.34.2",
 ]
