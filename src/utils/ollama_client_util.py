@@ -1,10 +1,16 @@
 import os
 
-# from agent_framework.ollama import OllamaChatClient
 from dotenv import load_dotenv
+from openai import AsyncOpenAI
+
+from agents import set_default_openai_client
 
 # loads all the environment variables
 load_dotenv()
 
-print("model name", os.getenv("OLLAMA_MODEL"))
-# ollama_client = OllamaChatClient(model=os.getenv("OLLAMA_MODEL"))
+ollama_client = AsyncOpenAI(
+    base_url=os.getenv("OPENAI_BASE_URL"),
+    api_key=os.getenv("OPENAI_API_KEY"),
+)
+
+set_default_openai_client(ollama_client)

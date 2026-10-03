@@ -6,14 +6,13 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from src.routes import ai_router
-
-# from src.utils.ollama_client_util import ollama_client
+from src.routes import ai_router, default_router
+from src.utils import ollama_client
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # app.state.ollama_client = ollama_client
+    app.state.ollama_client = ollama_client
     print("Ollama client initialized")
     yield
 
@@ -28,17 +27,5 @@ app = FastAPI(
 print(f"app name: {os.getenv('APP_NAME')}")
 
 
-# asyncio.run(main("What is India?"))
-
-
-@app.get("/")
-async def index_route():
-    return {"message": "API reached"}
-
-
-@app.get("/about")
-async def about_page():
-    return {"message": "About page"}
-
-
+app.include_router(default_router)
 app.include_router(ai_router)
