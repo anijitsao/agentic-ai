@@ -26,7 +26,7 @@ async def generate_response_from_prompt(req: ChatRequestModel):
         response = await Runner.run(get_triage_agent, input=req.prompt)
         print("Hello from openai-agents!", response)
         print("Final Output", response.final_output)
-        return {"data": {"prompt": req.prompt, "response": response.final_output}}
+        return response.final_output
     except Exception as e:
         print("error occcurred", e)
         raise HTTPException(
