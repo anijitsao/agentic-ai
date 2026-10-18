@@ -1,14 +1,13 @@
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, HTTPException, status
 
 from agents import Runner
-from src.agents import get_gk_agent, get_weather_agent
+from src.agents import get_gk_agent, get_triage_agent, get_weather_agent
 
 # from src.agents.history_agent import create_history_agent
 from src.models import (
     ChatRequestModel,
     ChatResponseModel,
     ErrorModel,
-    WeatherRequestModel,
 )
 
 router = APIRouter(tags=["agentic-ai"])
@@ -24,9 +23,9 @@ router = APIRouter(tags=["agentic-ai"])
 )
 async def generate_response_from_prompt(req: ChatRequestModel):
     try:
-        response = await Runner.run(get_gk_agent, input=req.prompt)
+        response = await Runner.run(get_triage_agent, input=req.prompt)
         print("Hello from openai-agents!", response)
-
+        print("Final Output", response.final_output)
         return {"data": {"prompt": req.prompt, "response": response.final_output}}
     except Exception as e:
         print("error occcurred", e)
