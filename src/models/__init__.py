@@ -1,2 +1,12 @@
+from .error_models import ErrorModel
 from .index_model import IndexResponseModel
-from .weather_model import ChatResponseModel, ChatRequestModel
+from .request_models import WeatherRequestModel
+from .weather_model import ChatRequestModel, ChatResponseModel
+
+__all__ = [
+    "ChatRequestModel",
+    "ChatResponseModel",
+    "ErrorModel",
+    "IndexResponseModel",
+    "WeatherRequestModel",
+]

@@ -2,7 +2,7 @@ import requests
 from agents.decorators import tool
 
 
-# @tool
+@tool
 def fetch_weather(city: str):
     try:
         # Step 1: Fetch Lat, Long of the city provided
@@ -38,11 +38,11 @@ def fetch_weather(city: str):
 
         current_weather_data = weather_data["current"]
 
-        # print("response received", current_weather_data)
+        print("response received", current_weather_data)
         return current_weather_data
     except Exception as e:
         print("unable to fetch weather", e)
         raise e
 
 
-print(fetch_weather(city="Kolkata"))
+# print(fetch_weather(city="Kolkata"))

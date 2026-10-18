@@ -9,3 +9,6 @@ dependencies = [
     "openai-agents>=0.23.1",
     "requests>=2.34.2",
 ]
+
+[tool.ruff.lint]
+ignore = ["BLE001", "RUFF010"]
