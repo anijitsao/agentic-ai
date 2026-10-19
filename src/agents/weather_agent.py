@@ -1,4 +1,5 @@
 from agents import Agent
+from src.models import WeatherResponseModel
 from src.tools import fetch_weather
 
 get_weather_agent = Agent(
@@ -11,4 +12,5 @@ get_weather_agent = Agent(
 
     """,
     tools=[fetch_weather],
+    output_type=WeatherResponseModel,
 )
