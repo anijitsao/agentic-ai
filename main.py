@@ -7,12 +7,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from src.routes import ai_router, default_router
-from src.utils import ollama_client
+from src.utils import openai_client
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    app.state.ollama_client = ollama_client
+    app.state.openai_client = openai_client
     print("Ollama client initialized")
     yield
 

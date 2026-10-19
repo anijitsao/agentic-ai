@@ -1,5 +1,4 @@
 from agents import Agent
-from src.models import ChatResponseModel
 
 from .gk_agent import get_gk_agent
 from .weather_agent import get_weather_agent
@@ -14,5 +13,9 @@ get_triage_agent = Agent(
 
     """,
     handoffs=[get_gk_agent, get_weather_agent],
-    output_type=ChatResponseModel
+    # output_type=ChatResponseModel
+    # As Groq does not support both Tool Calling and Structured Response
+    # in one Agent we have created another smaller agent which can perform
+    # the same.
+    # output_type=WeatherResponseModel,
 )
