@@ -14,7 +14,7 @@ def start_ingestion():
         generated_chunks = parse_file_get_chunks(file_path=file_path)
         print("generated chunks", generated_chunks)
 
-        chroma_client = get_client()
+        chroma_client = get_client("./weather_store")
         collection = get_collection(
             chroma_client=chroma_client, collection_name="weather_n_play"
         )

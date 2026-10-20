@@ -1,8 +1,8 @@
 import chromadb
 
 
-def get_client():
-    chroma_client = chromadb.Client()
+def get_client(db_path):
+    chroma_client = chromadb.PersistentClient(db_path)
     return chroma_client
 
 
