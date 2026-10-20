@@ -14,5 +14,5 @@ async def get_question_answer_service(req):
         print("error occcurred", e)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Agent execution failed: {str(e)}",
+            detail=f"Agent execution failed: {e!s}",  # same as str(e)
         )

@@ -13,5 +13,5 @@ async def get_weather_service(city: str):
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Agent execution failed: {str(e)}",
+            detail=f"Agent execution failed: {e!s}",  # same as str(e)
         )

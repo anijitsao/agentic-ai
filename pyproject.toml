@@ -1,7 +1,7 @@
 [project]
 name = "agentic-ai"
 version = "0.1.0"
-description = "Add your description here"
+description = "Weather and play Agentic AI app"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -11,4 +11,4 @@ dependencies = [
 ]
 
 [tool.ruff.lint]
-ignore = ["BLE001", "RUFF010"]
+extend-ignore = ["BLE001", "RUFF010"]
