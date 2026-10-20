@@ -5,10 +5,26 @@ description = "Weather and play Agentic AI app"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "chromadb>=1.5.9",
     "fastapi[standard]>=0.141.1",
     "openai-agents>=0.23.1",
+    "pymupdf>=2.0",
     "requests>=2.34.2",
+    "semantic-text-splitter>=0.33.0",
 ]
 
 [tool.ruff.lint]
-extend-ignore = ["BLE001", "RUFF010"]
+extend-ignore = ["BLE001"]
+
+[tool.pyright]
+exclude = ["**/node_modules", "**/__pycache__", "**/venv", "**/.venv"]
+ignore = ["**/__pycache__", "**/venv", "**/.venv"]
+
+# Suppress warnings about unknown or missing return types / Any types
+reportUnknownParameterType = false
+reportMissingParameterType = false
+reportUnknownLambdaType = false
+reportUnknownMemberType = false
+reportUnknownVariableType = false
+reportUnknownArgumentType = false
+reportAny = false

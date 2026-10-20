@@ -14,7 +14,7 @@ router = APIRouter(tags=["agentic-ai"])
 @router.post(
     "/question/",
     responses={
-        200: {"model": ChatResponseModel, "description": "Successful Response"},
+        200: {"model": ChatResponseModel | WeatherResponseModel, "description": "Successful Response"},
         400: {"model": ErrorModel, "description": "Invalid Input Data"},
         500: {"model": ErrorModel, "description": "Internal Server Error"},
     },
