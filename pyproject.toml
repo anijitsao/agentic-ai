@@ -28,3 +28,4 @@ reportUnknownMemberType = false
 reportUnknownVariableType = false
 reportUnknownArgumentType = false
 reportAny = false
+reportOptionalSubscript = false

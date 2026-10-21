@@ -42,4 +42,4 @@ def start_ingestion():
 
 
 start_ingestion()
-fetch_activities(["sunny day", "temperature 18C"])
+# print(fetch_activities("sunny day, temperature 18C"))

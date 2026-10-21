@@ -11,9 +11,13 @@ def fetch_activities(keywords):
     collection = get_collection(
         chroma_client=chroma_client, collection_name=os.getenv("CHROMA_DB_COLLECTION")
     )
-    documents = get_documents(
+    result = get_documents(
         collection,
-        keywords,
+        [keywords],
     )
-    print("documents", documents)
+    documents = result.get("documents")[0]
+    documents = "\n\n".join(documents)
+    if not documents:
+        return "No relevant game guidelines found."
+
     return documents

@@ -12,7 +12,7 @@ get_suggest_activity_agent = Agent(
     - First extract the city from the prompt
     - Fetch weather of the city using the fetch_weather tool passing the city name.
 
-    - Now use the search_activity tool and use temperature, wind_speed, humidity, snowfall, precipitation as a list.
+    - Now use the search_activity tool and use temperature, wind_speed, humidity, is_day, rain, snowfall, precipitation.
     - Perform RAG
     - To format the response please hanoff to format_agent
     """,
