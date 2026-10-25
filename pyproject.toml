@@ -29,3 +29,6 @@ reportUnknownVariableType = false
 reportUnknownArgumentType = false
 reportAny = false
 reportOptionalSubscript = false
+reportArgumentType = false
+reportUntypedFunctionDecorator = false
+reportCallIssue = false

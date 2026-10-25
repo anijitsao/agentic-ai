@@ -1,4 +1,5 @@
 from agents import Agent
+from src.guardrails import classify_input_guardrails
 
 from .gk_agent import get_gk_agent
 from .suggest_activity_agent import get_suggest_activity_agent
@@ -14,6 +15,7 @@ get_triage_agent = Agent(
     - When you are asked to suggest activities at a city redirect it to SuggestActivityAgent.
     """,
     handoffs=[get_gk_agent, get_weather_agent, get_suggest_activity_agent],
+    input_guardrails=[classify_input_guardrails],
     # output_type=ChatResponseModel
     # As Groq does not support both Tool Calling and Structured Response
     # in one Agent we have created another smaller agent which can perform

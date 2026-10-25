@@ -15,10 +15,9 @@ get_weather_agent = Agent(
     - To format the response please hanoff to format_agent
     """,
     tools=[fetch_weather],
-
     # As Groq does not support both Tool Calling and Structured Response
     # in one Agent we have created another smaller agent which can perform
     # the same.
     # output_type=WeatherResponseModel,
-    handoffs=[format_agent]
+    handoffs=[format_agent],
 )
