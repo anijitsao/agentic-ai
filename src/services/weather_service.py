@@ -7,7 +7,7 @@ from src.agents import get_weather_agent
 async def get_weather_service(city: str):
     try:
         response = await Runner.run(
-            get_weather_agent, input=f"what is the weather of {city}"
+            get_weather_agent, input=f"What is the weather of {city}?"
         )
         return response.final_output
     except Exception as e:

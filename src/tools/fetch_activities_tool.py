@@ -7,7 +7,7 @@ from src.utils import get_client, get_collection, get_documents
 
 @tool
 def fetch_activities(
-    temperature, wind_speed, is_day, humidity, snowfall, rain, precipitation
+    apparent_temperature: float, wind_speed: float, is_day: float, precipitation: float
 ):
     chroma_client = get_client(f"./{os.getenv('CHROMA_DB_NAME')}")
     collection = get_collection(
@@ -16,11 +16,10 @@ def fetch_activities(
     result = get_documents(
         collection,
         [
-            f"temperature {temperature}",
-            f"rain {rain}",
+            f"apparent temperature {apparent_temperature}",
+            f"precipitation {precipitation}",
             f"is day {bool(is_day)}",
-            f"humidity {humidity}, snowfall {snowfall}",
-            f"wind speed {wind_speed}"
+            f"wind speed {wind_speed}",
         ],
     )
     documents = result.get("documents")[0]

@@ -24,13 +24,10 @@ def fetch_weather(city: str):
                 "latitude": latitude,
                 "longitude": longitude,
                 "current": [
-                    "temperature_2m",
+                    "apparent_temperature",
                     "is_day",
                     "wind_speed_10m",
-                    "relative_humidity_2m",
                     "precipitation",
-                    "rain",
-                    "snowfall",
                 ],
             },
             timeout=5
