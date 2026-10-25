@@ -10,7 +10,7 @@ wheels/
 .venv
 
 # env files
-#.env
+.env
 
 # ChromaDB files
 .chroma/**/
