@@ -1,4 +1,5 @@
 from agents import Agent
+from src.guardrails import classify_input_guardrails
 
 # from src.guardrails import classify_input_guardrails
 from .gk_agent import get_gk_agent
@@ -16,7 +17,7 @@ get_triage_agent = Agent(
     """,
     handoffs=[get_gk_agent, get_weather_agent, get_suggest_activity_agent],
     # Groq doesn't support Guardrails
-    # input_guardrails=[classify_input_guardrails],
+    input_guardrails=[classify_input_guardrails],
     # output_type=ChatResponseModel
     # As Groq does not support both Tool Calling and Structured Response
     # in one Agent we have created another smaller agent which can perform

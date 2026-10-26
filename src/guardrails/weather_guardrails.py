@@ -1,15 +1,16 @@
+from agents.decorators import input_guardrail
+
 from agents import (
     Agent,
     GuardrailFunctionOutput,
     RunContextWrapper,
     Runner,
-    input_guardrail,
 )
 
 
 @input_guardrail
 async def classify_input_guardrails(
-    ctx: RunContextWrapper[dict], agent: Agent, input: str
+    ctx: RunContextWrapper[dict], agent: Agent, input
 ) -> GuardrailFunctionOutput:
 
     # 1. Dynamically extract the pre-built classifier agent from runtime context

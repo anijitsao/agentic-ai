@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ChatRequestModel(BaseModel):
@@ -11,7 +11,11 @@ class ChatResponse(BaseModel):
 
 
 class ChatResponseModel(BaseModel):
-    data: ChatResponse
+    prompt: str = Field(
+        description="The original user prompt or topic, e.g., 'describe python'"
+    )
+    response: str = Field(description="The generated description or answer.")
+
 
 class WeatherData(BaseModel):
     apparent_temperature: float
@@ -19,9 +23,11 @@ class WeatherData(BaseModel):
     wind_speed: float
     precipitation: float
 
+
 class WeatherResponse(BaseModel):
     prompt: str
     response: WeatherData
+
 
 class WeatherResponseModel(BaseModel):
     data: WeatherResponse
