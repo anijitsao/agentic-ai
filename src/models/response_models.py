@@ -11,10 +11,7 @@ class ChatResponse(BaseModel):
 
 
 class ChatResponseModel(BaseModel):
-    prompt: str = Field(
-        description="The original user prompt or topic, e.g., 'describe python'"
-    )
-    response: str = Field(description="The generated description or answer.")
+    data: ChatResponse
 
 
 class WeatherData(BaseModel):
