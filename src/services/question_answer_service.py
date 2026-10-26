@@ -20,10 +20,9 @@ async def get_question_answer_service(req):
             input=req.prompt,
             context={
                 "classifier_agent": classifier_agent
-            },  # Groq doesn't support Guardrails
+            },
         )
         print("Hello from openai-agents!", response)
-        print("Response final:\n", json.loads(response.final_output))
         return json.loads(response.final_output)
     except Exception as e:
         print("error occcurred", e)

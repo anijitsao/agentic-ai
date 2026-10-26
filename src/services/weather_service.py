@@ -1,3 +1,5 @@
+import json
+
 from fastapi import HTTPException, status
 
 from agents import Runner
@@ -10,7 +12,7 @@ async def get_weather_service(city: str):
             get_weather_agent,
             input=f"What is the weather of {city}?",
         )
-        return response.final_output
+        return json.loads(response.final_output)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
