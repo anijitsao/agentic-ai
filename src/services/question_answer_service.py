@@ -4,7 +4,8 @@ from fastapi import HTTPException, status
 
 from agents import Runner
 from src.agents import get_classifier_agent, get_triage_agent
-from src.sessions import session
+from src.models import ChatRequestModel
+from src.sessions import generate_session
 
 classifier_agent = get_classifier_agent("""You are an agent who can
     - Determine the user input has any vulgar words, asking for making lethal weapons
@@ -14,8 +15,9 @@ classifier_agent = get_classifier_agent("""You are an agent who can
     """)
 
 
-async def get_question_answer_service(req):
+async def get_question_answer_service(req: ChatRequestModel):
     try:
+        session = generate_session()
         response = await Runner.run(
             get_triage_agent,
             input=req.prompt,

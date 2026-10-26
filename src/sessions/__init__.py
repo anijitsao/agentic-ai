@@ -1,3 +1,3 @@
-from .user_session import session
+from .user_session import generate_session
 
-__all__ = ["session"]
+__all__ = ["generate_session"]

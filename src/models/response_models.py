@@ -1,8 +1,4 @@
-from pydantic import BaseModel, Field
-
-
-class ChatRequestModel(BaseModel):
-    prompt: str = "describe python"
+from pydantic import BaseModel
 
 
 class ChatResponse(BaseModel):
