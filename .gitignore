@@ -14,3 +14,6 @@ wheels/
 
 # ChromaDB files
 .chroma/**/
+
+# Sqlite files
+sqlite/
