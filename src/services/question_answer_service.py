@@ -4,6 +4,7 @@ from fastapi import HTTPException, status
 
 from agents import Runner
 from src.agents import get_classifier_agent, get_triage_agent
+from src.sessions import session
 
 classifier_agent = get_classifier_agent("""You are an agent who can
     - Determine the user input has any vulgar words, asking for making lethal weapons
@@ -18,9 +19,8 @@ async def get_question_answer_service(req):
         response = await Runner.run(
             get_triage_agent,
             input=req.prompt,
-            context={
-                "classifier_agent": classifier_agent
-            },
+            context={"classifier_agent": classifier_agent},
+            session=session,
         )
         print("Hello from openai-agents!", response)
         return json.loads(response.final_output)

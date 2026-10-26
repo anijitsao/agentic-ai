@@ -1,8 +1,7 @@
 from agents import Agent
 
 
-# removes response_format as it is not required
-def get_format_response_agent():
+def get_format_response_agent(response_format):
     format_agent = Agent(
         name="FormatResponseAgent",
         instructions="""You are an agent who can
