@@ -10,11 +10,12 @@ This example illustrates various concepts of Agentic AI System using [Python](ht
   - `SuggestActivityAgent` suggests activities and games based on the current weather conditions.
   - `FormatResponseAgent` format the responses to JSON.
 
-- **Tool calling** is supported through python functions.
-- User prompts are filtered through **guardails** to remove *profanity*.
-- Redirection to various agents is supported through **Handoffs**.  
-- Response formats are supported using [Pydantic](https://pydantic.dev/docs/validation/latest/get-started/).
-- [Sqlite](https://www.sqlite.org/) based **sessions** are used for Agent Memory.
+- Multiple skills for the agents are added.
+  - **Tool calling** is supported through python functions.
+  - User prompts are filtered through **guardails** to remove *profanity*.
+  - Redirection to various agents is supported through **Handoffs**.  
+  - Response formats are supported using [Pydantic](https://pydantic.dev/docs/validation/latest/get-started/).
+  - [Sqlite](https://www.sqlite.org/) based **sessions** are used for Agent Memory.
  
 <br/>
 
@@ -25,9 +26,15 @@ This example illustrates various concepts of Agentic AI System using [Python](ht
 
 - [Groq](https://console.groq.com/docs/quickstart) cloud APIs are used for foundation model purpose. Please make sure you have the API Key to access [Groq](https://console.groq.com/docs/quickstart).
   - Local LLM based foundation models are also supported using [Ollama](https://docs.ollama.com/). Please check [here](https://github.com/anijitsao/python-app-simple-weather-n-play-ai/tree/ollama).
+
+<br/>
+
 - REST APIs are served using [FastAPI](https://fastapi.tiangolo.com/).
 
-- For vector store [ChromaDB](https://www.trychroma.com/) is used.
+- Retrieval Augmented Generation is added.
+  - For vector store [ChromaDB](https://www.trychroma.com/) is used.
+  - PDF files are used to create the Knowledge Base for the Agents. To parse and chunks PDF files, [pymupdf](https://pymupdf.readthedocs.io/en/latest/) and [semantic-text-splitter](https://pypi.org/project/semantic-text-splitter/) is used.
+  
 
 ### Install
 To install all the dependencies please use the following commands from a shell/ Terminal. For package management purpose [uv](https://docs.astral.sh/uv/) is used. However some of `pip` commands are also listed.
@@ -49,13 +56,17 @@ source .venv/bin/activate  # Linux
 uv sync
 ```
 
+<br/>
+
 > :exclamation: Please make sure you have run the `ingestion.py` before running the FastAPI application. This will create the vector store for **Retrival Augmented Generation**.
 
 ```shell
 python ingestion.py
 ```
 
-Now to run the application please use the following commands
+<br/>
+
+Now to run the application please use the following commands.
 
 ```shell
 # Navigate to the directory
@@ -66,7 +77,7 @@ uv run fastapi dev app.py # development
 uv run fastapi run app.py # production
 ```
 
-Please visit [http://localhost:8000/docs](http://localhost:8000/docs) and play with the agents!
+:rocket: Please visit [http://localhost:8000/docs](http://localhost:8000/docs) and play with the agents!
 
 ##### pip based useful commands
 ```shell
