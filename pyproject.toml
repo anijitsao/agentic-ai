@@ -1,5 +1,5 @@
 [project]
-name = "agentic-ai"
+name = "python-app-simple-weather-n-play-ai"
 version = "0.1.0"
 description = "Weather and play Agentic AI app"
 readme = "README.md"
