@@ -71,8 +71,11 @@ To make sure that Ollama is running please navigate your browser to [http://loca
 # List all the installed models in Ollama
 ollama list
 
-# To run a model e.g. smollm2:135m in interactive mode
-ollama run smollm:135m
+# To download a model
+ollama pull qwen3:0.6b
+
+# To run a model e.g. qwen3:0.6b in interactive mode
+ollama run qwen3:0.6b
 
 # To run the ollama service
 ollama serve
@@ -93,24 +96,6 @@ uv run fastapi run app.py # production
 :rocket: Please visit [http://localhost:8000/docs](http://localhost:8000/docs) and play with the agents!
 
 ##### pip based useful commands
-```shell
-# creates a Virtual environment
-python -m venv .venv  
-
-# It will install all the dependencies listed in requirements.txt file
-pip install -r requirements.txt 
-
-# Run the code
-python main.py
-```
-
-
-
-
-
-### Install
-To install all the dependencies please use the following commands from a shell/ Terminal
-
 ```shell
 # creates a Virtual environment
 python -m venv .venv  
