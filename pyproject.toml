@@ -9,9 +9,29 @@ dependencies = [
     "fastapi[standard]>=0.141.1",
     "openai-agents>=0.23.1",
     "pymupdf>=2.0",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "pytest-mock>=3.17.0",
     "requests>=2.34.2",
     "semantic-text-splitter>=0.33.0",
 ]
+
+[tool.pytest.ini_options]
+addopts = "-ra -q --strict-markers --cov=. --cov-report=html --cov-report=term"
+testpaths = ["tests"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+]
+filterwarnings = ["error", "ignore::UserWarning"]
+
+[tool.coverage.run]
+source = ["."]
+omit = ["tests/*", "venv/*", "setup.py"]
+
+[tool.coverage.html]
+directory = "coverage"
+
 
 [tool.ruff.lint]
 extend-ignore = ["BLE001"]
@@ -19,6 +39,7 @@ extend-ignore = ["BLE001"]
 [tool.pyright]
 exclude = ["**/node_modules", "**/__pycache__", "**/venv", "**/.venv"]
 ignore = ["**/__pycache__", "**/venv", "**/.venv"]
+
 
 # Suppress warnings about unknown or missing return types / Any types
 reportUnknownParameterType = false
