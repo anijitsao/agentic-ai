@@ -17,3 +17,6 @@ wheels/
 
 # Sqlite files
 sqlite/
+
+# Test cases
+coverage/

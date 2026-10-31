@@ -79,6 +79,13 @@ uv run fastapi run app.py # production
 
 :rocket: Please visit [http://localhost:8000/docs](http://localhost:8000/docs) and play with the agents!
 
+### Test
+Unit test cases are also added to get code coverage. [Pytest](https://docs.pytest.org/en/stable/) is used to write and run test cases. Please use the following commands to run test cases.
+
+```shell
+pytest
+```
+
 ##### pip based useful commands
 ```shell
 # creates a Virtual environment
