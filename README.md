@@ -1,27 +1,101 @@
-# Agentic AI using python
-This example illustrates various concepts of AI agents using python and Microsoft Agents Framework. To run and test all those AI Agents locally we are using Ollama models. 
+# python-app-simple-weather-n-play-ai
+This example illustrates various concepts of Agentic AI System using [Python](https://www.python.org/) and [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/overview/?pivots=programming-language-python). This is multiple agents system where agents can have tools, can communicate using handoffs, filter user input prompts using guardrails. User can asks for current weather about their current city (worldwide) and the system will give them suggestion about games and activities based on the weather conditions. Agents can search their Knowledge Base and predict using Retrival Augmented Generation (RAG).
 
-## Todo 
-We will serve several endpoint using `FastAPI` through which our agents will work
+## Features 
+- Code is updated with latest version of libraries and packages.
+- Multiple Agents are supported.
+  - `TriageAgent` redirects the user prompt to corresponding agent based on handoff direction.
+  - `WeatherAgent` uses function tools to find the weather of the current city.
+  - `GKAgent` gives answers to General Knowledge questions.
+  - `SuggestActivityAgent` suggests activities and games based on the current weather conditions.
+  - `FormatResponseAgent` format the responses to JSON.
 
-### Ollama service
+- Multiple skills for the agents are added.
+  - **Tool calling** is supported through python functions.
+  - User prompts are filtered through **guardails** to remove *profanity*.
+  - Redirection to various agents is supported through **Handoffs**.  
+  - Response formats are supported using [Pydantic](https://pydantic.dev/docs/validation/latest/get-started/).
+  - [Sqlite](https://www.sqlite.org/) based **sessions** are used for Agent Memory.
+ 
+<br/>
+
+- For **Agents Orchestration**, [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/overview/?pivots=programming-language-python) is used. 
+  - to see [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/) based orchestration please check [here](https://github.com/anijitsao/python-app-simple-weather-n-play-ai/tree/master).
+
+  
+
+- Local LLM based foundation models are supported using [Ollama](https://docs.ollama.com/). 
+  - [Groq](https://console.groq.com/docs/quickstart) cloud APIs are used for foundation model purpose. Please make sure you have the API Key to access [Groq](https://console.groq.com/docs/quickstart). Please check [here](https://github.com/anijitsao/python-app-simple-weather-n-play-ai/tree/master).
+
+<br/>
+
+- REST APIs are served using [FastAPI](https://fastapi.tiangolo.com/).
+
+- Retrieval Augmented Generation is added.
+  - For vector store [ChromaDB](https://www.trychroma.com/) is used.
+  - PDF files are used to create the Knowledge Base for the Agents. To parse and chunks PDF files, [pymupdf](https://pymupdf.readthedocs.io/en/latest/) and [semantic-text-splitter](https://pypi.org/project/semantic-text-splitter/) is used.
+  
+
+### Install
+To install all the dependencies please use the following commands from a shell/ Terminal. For package management purpose [uv](https://docs.astral.sh/uv/) is used. However some of `pip` commands are also listed.
+
+##### uv based shell commands
+Please use the following commands from a shell / Terminal.
+
+```shell
+git clone https://github.com/anijitsao/python-app-simple-weather-n-play-ai.git
+
+# Navigate into the directory
+cd python-app-simple-weather-n-play-ai
+
+# Activate the virtual environment
+source .venv/bin/activate  # Linux
+.venv\Scripts\activate # Windows
+
+# Install all those dependencies
+uv sync
+```
+
+<br/>
+
+> :exclamation: Please make sure you have run the `ingestion.py` before running the FastAPI application. This will create the vector store for **Retrival Augmented Generation**. You also need to run the Ollama Service before running the application.
+
+```shell
+python ingestion.py
+```
+
+##### Commands to run Ollama service
 To make sure that Ollama is running please navigate your browser to [http://localhost:11434/](http://localhost:11434/). If nothing is shown there please use the following command to run the Ollama Service.
 
 ```shell
 # List all the installed models in Ollama
 ollama list
 
-# To run a model e.g. smollm2:135m in interactive mode
-ollama run smollm:135m
+# To download a model
+ollama pull qwen3:0.6b
+
+# To run a model e.g. qwen3:0.6b in interactive mode
+ollama run qwen3:0.6b
 
 # To run the ollama service
 ollama serve
 ```
 
 
-### Install
-To install all the dependencies please use the following commands from a shell/ Terminal
+Now to run the application please use the following commands.
 
+```shell
+# Navigate to the directory
+cd python-app-simple-weather-n-play-ai
+
+# Run the FastAPI server
+uv run fastapi dev app.py # development
+uv run fastapi run app.py # production
+```
+
+:rocket: Please visit [http://localhost:8000/docs](http://localhost:8000/docs) and play with the agents!
+
+##### pip based useful commands
 ```shell
 # creates a Virtual environment
 python -m venv .venv  
