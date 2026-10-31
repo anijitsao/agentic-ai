@@ -1,5 +1,5 @@
-# Agentic AI using python
-This example illustrates various concepts of AI agents using python and Microsoft Agents Framework. To run and test all those AI Agents locally we are using Ollama models. 
+# python-app-simple-weather-n-play-ai.git
+This example illustrates various concepts of Agentic AI System using python and OpenAI Agents SDK. This is multiple agents system where agents can have tools, can communicate using handoffs, filter user input prompts using guardrails. User can asks for current weather about their current city (worldwide) and the system will give them suggestion about games and activities based on the weather conditions. Agents can search their Knowledge Base and predict using Retrival Augmented Generation (RAG).
 
 ## Todo 
 We will serve several endpoint using `FastAPI` through which our agents will work
